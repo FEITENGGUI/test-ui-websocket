@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Row, Col } from 'antd';
+// import { async } from 'q';
 
 let ws;
 
@@ -7,6 +8,7 @@ export default class TestWebsocket extends React.Component {
     state = {
         message: [][2],
         disabled: false,
+        test:10
     }
     // componentDidMount() {
     //     console.log("wwwwwwwwwwwwwwwwwwwwwwwww")
@@ -70,12 +72,27 @@ export default class TestWebsocket extends React.Component {
     }
 
 
-
+    handleClick= async ()=>{
+        let a=0;
+        alert(a);
+        console.log(a);
+        setTimeout(()=>{
+            a=a+1;
+            this.setState({test:a});
+        },1000*5);
+        alert(a)
+        console.log(a)
+    }
     render() {
         const left = "left";
         const right = "right";
         const color = "red";
         return (<div>
+            <Row>
+                <Button onClick={this.handleClick}>
+                    {this.state.test}
+                </Button>
+            </Row>
             <Button
                 onClick={this.onClickHandle}
                 disabled={this.state.disabled}
